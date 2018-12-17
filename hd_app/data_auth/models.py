@@ -64,7 +64,7 @@ class UserModel(db.Model):
             'lastName': self.lastName,
             'email': self.email,
             'activated': self.activated,
-            'authoritites': [authority.authority_name for authority in self.authorities]
+            'authorities': [authority.authority_name for authority in self.authorities]
         }
 
     @classmethod
@@ -90,7 +90,6 @@ class UserModel(db.Model):
                 'lastName': x.lastName,
                 'email': x.email,
                 'activated': x.activated,
-                'organizationId': x.organizationId,
                 'authorities': [authority.authority_name for authority in x.authorities]
             }
 
