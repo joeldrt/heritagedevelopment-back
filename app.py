@@ -15,6 +15,7 @@ from hd_app.database import global_init as start_mongo
 # rutas de los endpoints
 from hd_app.api.usuario.autentificacion.endpoints.autenticar import ns as sesion_namespace
 from hd_app.api.usuario.endpoints.usuario import ns as usuarios_namespace
+from hd_app.api.inmueble.endpoints.inmueble import ns as inmuebles_namespace
 
 app = Flask(__name__, static_url_path='/hd_app/static')
 logging_conf_path = os.path.normpath(os.path.join(os.path.dirname(__file__), 'logging.conf'))
@@ -57,6 +58,7 @@ def initialize_app(flask_app):
     # se agregan las clases que contienen los endpoints
     api.add_namespace(sesion_namespace)
     api.add_namespace(usuarios_namespace)
+    api.add_namespace(inmuebles_namespace)
 
     flask_app.register_blueprint(blueprint)
 
