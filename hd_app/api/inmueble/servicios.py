@@ -9,7 +9,7 @@ from hd_app.database.inmueble import Inmueble
 def crear_inmueble(nombre: str, m2_terreno: float, m2_construccion: float, niveles: int, recamaras: int, banos: float,
                    cajones_estacionamiento: int, amenidades: str, descripccion: str, precio_venta: float,
                    precio_renta: float, calle: str, num_exterior: str, num_interior: str, colonia: str, municipio: str,
-                   estado: str, pais: str, tags: [str], fotos: [str], status: int) -> Inmueble:
+                   estado: str, pais: str, tags: [str], fotos: [str]) -> Inmueble:
     inmueble = Inmueble()
     inmueble.nombre = nombre
     inmueble.m2_terreno = m2_terreno
@@ -31,7 +31,6 @@ def crear_inmueble(nombre: str, m2_terreno: float, m2_construccion: float, nivel
     inmueble.pais = pais
     inmueble.tags = tags
     inmueble.fotos = fotos
-    inmueble.status = status
 
     inmueble.save()
 
@@ -41,7 +40,7 @@ def crear_inmueble(nombre: str, m2_terreno: float, m2_construccion: float, nivel
 def editar_inmueble(inmueble_id: str, nombre: str, m2_terreno: float, m2_construccion: float, niveles: int, recamaras: int,
                     banos: float, cajones_estacionamiento: int, amenidades: str, descripccion: str, precio_venta: float,
                     precio_renta: float, calle: str, num_exterior: str, num_interior: str, colonia: str, municipio: str,
-                    estado: str, pais: str, tags: [str], fotos: [str], status: int) -> Inmueble:
+                    estado: str, pais: str, tags: [str], fotos: [str]) -> Inmueble:
     inmueble = Inmueble.objects().get(id=inmueble_id)
     inmueble.nombre = nombre
     inmueble.m2_terreno = m2_terreno
@@ -63,11 +62,18 @@ def editar_inmueble(inmueble_id: str, nombre: str, m2_terreno: float, m2_constru
     inmueble.pais = pais
     inmueble.tags = tags
     inmueble.fotos = fotos
-    inmueble.status = status
 
     inmueble.save()
 
     return inmueble
+
+
+def borrar_inmueble(inmueble_id: str) -> bool:
+    inmueble = Inmueble.objects().get(id=inmueble_id)
+    if not inmueble:
+        raise Exception('No se encotró el inmueble con id: {}'.format(inmueble_id))
+    inmueble.delete()
+    return True
 
 
 def obtener_inmuebles() -> List[Inmueble]:
