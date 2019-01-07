@@ -34,7 +34,8 @@ class Inmnueble(Resource):
         try:
             inmueble_ret = crear_inmueble(nombre=data.get('nombre'), m2_terreno=data.get('m2_terreno'),
                                           m2_construccion=data.get('m2_construccion'), niveles=data.get('niveles'),
-                                          recamaras=data.get('m2_construccion'), banos=data.get('m2_construccion'),
+                                          recamaras=data.get('m2_construccion'), banos=data.get('banos'),
+                                          medios_banos=data.get('medios_banos'),
                                           cajones_estacionamiento=data.get('cajones_estacionamiento'),
                                           amenidades=data.get('amenidades'), descripccion=data.get('descripccion'),
                                           precio_venta=data.get('precio_venta'), precio_renta=data.get('precio_renta'),
@@ -92,7 +93,7 @@ class InmuebleActions(Resource):
             inmueble_obj = editar_inmueble(inmueble_id=data.get('id'), nombre=data.get('nombre'),
                                            m2_terreno=data.get('m2_terreno'), m2_construccion=data.get('m2_construccion'),
                                            niveles=data.get('niveles'), recamaras=data.get('m2_construccion'),
-                                           banos=data.get('m2_construccion'),
+                                           banos=data.get('m2_construccion'), medios_banos=data.get('medios_banos'),
                                            cajones_estacionamiento=data.get('cajones_estacionamiento'),
                                            amenidades=data.get('amenidades'), descripccion=data.get('descripccion'),
                                            precio_venta=data.get('precio_venta'), precio_renta=data.get('precio_renta'),

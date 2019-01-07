@@ -14,7 +14,8 @@ class Inmueble(mongoengine.Document):
 
     niveles = mongoengine.IntField()
     recamaras = mongoengine.IntField()
-    banos = mongoengine.FloatField()
+    banos = mongoengine.IntField()
+    medios_banos = mongoengine.IntField()
     cajones_estacionamiento = mongoengine.IntField()
     amenidades = mongoengine.StringField()
 
